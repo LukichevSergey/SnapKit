@@ -14,6 +14,8 @@ class Button {
     var color: UIColor
     var textAlignment: NSTextAlignment
     
+    var buttonDelegate: ButtonDelegate?
+    
     init(title: String, color: UIColor, textAlignment: NSTextAlignment) {
         self.title = title
         self.color = color
@@ -28,7 +30,12 @@ class Button {
         button.layer.cornerRadius        = button.frame.height / 2
         button.titleLabel?.font          = .systemFont(ofSize: 35)
         button.titleLabel?.textAlignment = self.textAlignment
+        button.addTarget(self, action: #selector(pressToButton), for: .touchUpInside)
         return button
+    }
+    
+    @objc func pressToButton() {
+        print("test")
     }
     
 }

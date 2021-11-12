@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8753EE57273DED9F0042A415 /* ButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8753EE56273DED9F0042A415 /* ButtonDelegate.swift */; };
 		87ABF640273C9E1600932C50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ABF63F273C9E1600932C50 /* AppDelegate.swift */; };
 		87ABF642273C9E1600932C50 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ABF641273C9E1600932C50 /* SceneDelegate.swift */; };
 		87ABF644273C9E1600932C50 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ABF643273C9E1600932C50 /* ViewController.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8753EE56273DED9F0042A415 /* ButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonDelegate.swift; sourceTree = "<group>"; };
 		87ABF63C273C9E1600932C50 /* SnapKitTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapKitTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87ABF63F273C9E1600932C50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87ABF641273C9E1600932C50 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				87ABF656273CDB9200932C50 /* Button.swift */,
+				8753EE56273DED9F0042A415 /* ButtonDelegate.swift */,
 				87ABF63F273C9E1600932C50 /* AppDelegate.swift */,
 				87ABF641273C9E1600932C50 /* SceneDelegate.swift */,
 				87ABF643273C9E1600932C50 /* ViewController.swift */,
@@ -153,6 +156,7 @@
 				87ABF640273C9E1600932C50 /* AppDelegate.swift in Sources */,
 				87ABF642273C9E1600932C50 /* SceneDelegate.swift in Sources */,
 				87ABF657273CDB9200932C50 /* Button.swift in Sources */,
+				8753EE57273DED9F0042A415 /* ButtonDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

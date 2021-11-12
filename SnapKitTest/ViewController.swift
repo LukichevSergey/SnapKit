@@ -59,12 +59,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        // Do any additional setup after loading the view.
+        
         self.view.backgroundColor = .black
         
         self.view.addSubview(mainStack)
@@ -149,6 +144,16 @@ class ViewController: UIViewController {
         button12.snp.makeConstraints { make in
             make.height.equalTo(self.button12.snp.width)
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+}
+
+extension ViewController: ButtonDelegate {
+    func returnedValue(value: String) {
+        print(value)
     }
 }
 
