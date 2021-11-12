@@ -8,34 +8,47 @@
 import Foundation
 import UIKit
 
-class Button {
+class Button: UIButton {
     
-    var title: String
-    var color: UIColor
-    var textAlignment: NSTextAlignment
+    var title: String?
+    var color: UIColor?
+    var textAlignment: NSTextAlignment?
     
-    var buttonDelegate: ButtonDelegate?
+    weak var delegate: ButtonDelegate?
     
-    init(title: String, color: UIColor, textAlignment: NSTextAlignment) {
-        self.title = title
-        self.color = color
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
+    }
+    
+    init(title: String, color: UIColor, textAlignment: NSTextAlignment, frame: CGRect) {
+        self.title         = title
+        self.color         = color
         self.textAlignment = textAlignment
+        super.init(frame: frame)
+        commonInit()
     }
     
-    func settingButton() -> UIButton {
-        let button = UIButton(type: .system)
-        button.setTitle("\(self.title)", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor           = self.color
-        button.layer.cornerRadius        = button.frame.height / 2
-        button.titleLabel?.font          = .systemFont(ofSize: 35)
-        button.titleLabel?.textAlignment = self.textAlignment
-        button.addTarget(self, action: #selector(pressToButton), for: .touchUpInside)
-        return button
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        commonInit()
     }
     
+//    override func layoutSubviews() {
+//        self.layer.cornerRadius = self.frame.height / 2
+//    }
+    
+    private func commonInit() {
+        self.backgroundColor           = self.color
+        self.titleLabel?.font          = .systemFont(ofSize: 35)
+        self.titleLabel?.textAlignment = self.textAlignment!
+        self.setTitle(self.title, for: .normal)
+        self.setTitleColor(.white, for: .normal)
+        self.addTarget(self, action: #selector(pressToButton), for: .touchUpInside)
+    }
+
     @objc func pressToButton() {
-        print("test")
+        delegate?.returnedValue(value: self.title!)
     }
     
 }
