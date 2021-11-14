@@ -11,8 +11,26 @@ import UIKit
 class Button: UIButton {
     
     var title: String?
-    var color: UIColor?
-    var textAlignment: NSTextAlignment?
+    var color: UIColor? {
+        if (title == Buttons.equals.rawValue
+            || title == Buttons.divide.rawValue
+            || title == Buttons.multiply.rawValue
+            || title == Buttons.minus.rawValue
+            || title == Buttons.plus.rawValue) {
+            return .orange
+        } else if (title == Buttons.reset.rawValue || title == Buttons.changeSign.rawValue || title == Buttons.percent.rawValue) {
+            return .lightGray
+        } else {
+            return .darkGray
+        }
+    }
+    var textAlignment: NSTextAlignment? {
+        if title == "0" {
+            return .left
+        } else {
+            return .center
+        }
+    }
     
     weak var delegate: ButtonDelegate?
     
@@ -21,10 +39,8 @@ class Button: UIButton {
         commonInit()
     }
     
-    init(title: String, color: UIColor, textAlignment: NSTextAlignment, frame: CGRect) {
-        self.title         = title
-        self.color         = color
-        self.textAlignment = textAlignment
+    init(title: String, frame: CGRect) {
+        self.title = title
         super.init(frame: frame)
         commonInit()
     }

@@ -10,67 +10,43 @@ import SnapKit
 
 class ViewController: UIViewController {
     
-    var allButtons: [[Button]] = [[],[],[],[],[]]
-    
-
-    let button  = Button(title: "0", color: .darkGray, textAlignment: .left, frame: .zero)
-    let button2 = Button(title: ",", color: .darkGray, textAlignment: .center, frame: .zero)
-    let button3 = Button(title: "=", color: .darkGray, textAlignment: .center, frame: .zero)
+    var buttons: [[Button]] = [[], [], [], [], []]
 
     lazy var stack: UIStackView = {
-        let stack          = UIStackView(arrangedSubviews: [button, button2, button3])
+        let stack          = UIStackView(arrangedSubviews: buttons[0])
         stack.distribution = .fill
         stack.spacing      = 10
         stack.axis         = .horizontal
         return stack
     }()
-
-    let button5 = Button(title: "1", color: .darkGray, textAlignment: .center, frame: .zero)
-    let button6 = Button(title: "2", color: .darkGray, textAlignment: .center, frame: .zero)
-    let button7 = Button(title: "3", color: .darkGray, textAlignment: .center, frame: .zero)
-    let button8 = Button(title: "+", color: .orange, textAlignment: .center, frame: .zero)
-
+    
     lazy var stack2: UIStackView = {
-        let stack          = UIStackView(arrangedSubviews: [button5, button6, button7, button8])
+        let stack          = UIStackView(arrangedSubviews: buttons[1])
         stack.distribution = .fillProportionally
         stack.spacing      = 10
         stack.axis         = .horizontal
         return stack
     }()
-
-    let button9  = Button(title: "4", color: .darkGray, textAlignment: .center, frame: .zero)
-    let button10 = Button(title: "5", color: .darkGray, textAlignment: .center, frame: .zero)
-    let button11 = Button(title: "6", color: .darkGray, textAlignment: .center, frame: .zero)
-    let button12 = Button(title: "-", color: .orange, textAlignment: .center, frame: .zero)
 
     lazy var stack3: UIStackView = {
-        let stack          = UIStackView(arrangedSubviews: [button9, button10, button11, button12])
+        let stack          = UIStackView(arrangedSubviews: buttons[2])
         stack.distribution = .fillProportionally
         stack.spacing      = 10
         stack.axis         = .horizontal
         return stack
     }()
 
-    let button13 = Button(title: "7", color: .darkGray, textAlignment: .center, frame: .zero)
-    let button14 = Button(title: "8", color: .darkGray, textAlignment: .center, frame: .zero)
-    let button15 = Button(title: "9", color: .darkGray, textAlignment: .center, frame: .zero)
-    let button16 = Button(title: "*", color: .orange, textAlignment: .center, frame: .zero)
 
     lazy var stack4: UIStackView = {
-        let stack          = UIStackView(arrangedSubviews: [button13, button14, button15, button16])
+        let stack          = UIStackView(arrangedSubviews: buttons[3])
         stack.distribution = .fillProportionally
         stack.spacing      = 10
         stack.axis         = .horizontal
         return stack
     }()
 
-    let button17 = Button(title: "AC", color: .lightGray, textAlignment: .center, frame: .zero)
-    let button18 = Button(title: "+/-", color: .lightGray, textAlignment: .center, frame: .zero)
-    let button19 = Button(title: "%", color: .lightGray, textAlignment: .center, frame: .zero)
-    let button20 = Button(title: "/", color: .orange, textAlignment: .center, frame: .zero)
-
     lazy var stack5: UIStackView = {
-        let stack          = UIStackView(arrangedSubviews: [button17, button18, button19, button20])
+        let stack          = UIStackView(arrangedSubviews: buttons[4])
         stack.distribution = .fillProportionally
         stack.spacing      = 10
         stack.axis         = .horizontal
@@ -97,43 +73,75 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .black
         
-
         Buttons.allCases.forEach { item in
-            let button = Button(title: item.rawValue, color: .darkGray, textAlignment: .center, frame: .zero)
-            button.delegate = self
-            if button.title == "0" || button.title! == "," || button.title! == "=" {
-                allButtons[0].append(button)
-            } else {
-                allButtons[1].append(button)
+            if item.rawValue == "0" || item.rawValue == "," || item.rawValue == "=" {
+                let button = Button(title: item.rawValue, frame: .zero)
+                button.delegate = self
+                self.buttons[0].append(button)
+            } else if item.rawValue == "1" || item.rawValue == "2" || item.rawValue == "3" || item.rawValue == "+" {
+                let button = Button(title: item.rawValue, frame: .zero)
+                button.delegate = self
+                self.buttons[1].append(button)
+            } else if item.rawValue == "4" || item.rawValue == "5" || item.rawValue == "6" || item.rawValue == "-" {
+                let button = Button(title: item.rawValue, frame: .zero)
+                button.delegate = self
+                self.buttons[2].append(button)
+            } else if item.rawValue == "7" || item.rawValue == "8" || item.rawValue == "9" || item.rawValue == "*" {
+                let button = Button(title: item.rawValue, frame: .zero)
+                button.delegate = self
+                self.buttons[3].append(button)
+            } else if item.rawValue == "AC" || item.rawValue == "+/-" || item.rawValue == "%" || item.rawValue == "/" {
+                let button = Button(title: item.rawValue, frame: .zero)
+                button.delegate = self
+                self.buttons[4].append(button)
             }
         }
         
-        for item in allButtons {
-            print(item)
+
+        
+        for item in buttons[1] {
+            stack2.addSubview(item)
+            item.snp.makeConstraints { make in
+                make.height.equalTo(item.snp.width)
+            }
         }
         
-        button.delegate = self
-        button2.delegate = self
-        button3.delegate = self
-        button5.delegate = self
-        button6.delegate = self
-        button7.delegate = self
-        button8.delegate = self
-        button9.delegate = self
-        button10.delegate = self
-        button11.delegate = self
-        button12.delegate = self
-        button13.delegate = self
-        button14.delegate = self
-        button15.delegate = self
-        button16.delegate = self
-        button17.delegate = self
-        button18.delegate = self
-        button19.delegate = self
-        button20.delegate = self
         
-        self.view.backgroundColor = .black
+        for (index, item) in buttons[0].enumerated() {
+            stack.addSubview(item)
+            item.snp.makeConstraints { make in
+                if index != 0 {
+                    make.width.equalTo(buttons[0][0].snp.width)
+                }
+                make.height.equalTo(buttons[0][0].snp.width)
+            }
+        }
+        
+        for item in buttons[2] {
+            stack3.addSubview(item)
+            item.snp.makeConstraints { make in
+                make.height.equalTo(item.snp.width)
+            }
+        }
+        
+        for item in buttons[3] {
+            stack4.addSubview(item)
+            item.snp.makeConstraints { make in
+                make.height.equalTo(item.snp.width)
+            }
+        }
+        
+        for item in buttons[4] {
+            stack5.addSubview(item)
+            item.snp.makeConstraints { make in
+                make.height.equalTo(item.snp.width)
+            }
+        }
+
+        
+
 
         self.view.addSubview(mainStack)
         mainStack.snp.makeConstraints { make in
@@ -172,103 +180,27 @@ class ViewController: UIViewController {
             make.right.left.equalTo(mainStack)
             make.centerX.equalTo(mainStack)
         }
+        
+        
 
-        stack.addSubview(button)
-        button.snp.makeConstraints { make in
-            make.height.equalTo(self.button5.snp.width)
-        }
-
-        stack.addSubview(button2)
-        button2.snp.makeConstraints { make in
-            make.height.equalTo(self.button5.snp.width)
-            make.width.equalTo(self.button2.snp.height)
-        }
-
-        stack.addSubview(button3)
-        button3.snp.makeConstraints { make in
-            make.height.equalTo(self.button5.snp.width)
-            make.width.equalTo(self.button3.snp.height)
-        }
-
-        stack2.addSubview(button5)
-        button5.snp.makeConstraints { make in
-            make.height.equalTo(self.button5.snp.width)
-        }
-
-        stack2.addSubview(button6)
-        button6.snp.makeConstraints { make in
-            make.height.equalTo(self.button6.snp.width)
-        }
-
-        stack2.addSubview(button7)
-        button7.snp.makeConstraints { make in
-            make.height.equalTo(self.button7.snp.width)
-        }
-
-        stack2.addSubview(button8)
-        button8.snp.makeConstraints { make in
-            make.height.equalTo(self.button8.snp.width)
-        }
-
-        stack3.addSubview(button9)
-        button9.snp.makeConstraints { make in
-            make.height.equalTo(self.button9.snp.width)
-        }
-
-        stack3.addSubview(button10)
-        button10.snp.makeConstraints { make in
-            make.height.equalTo(self.button10.snp.width)
-        }
-
-        stack3.addSubview(button11)
-        button11.snp.makeConstraints { make in
-            make.height.equalTo(self.button11.snp.width)
-        }
-
-        stack3.addSubview(button12)
-        button12.snp.makeConstraints { make in
-            make.height.equalTo(self.button12.snp.width)
-        }
-
-        stack4.addSubview(button13)
-        button13.snp.makeConstraints { make in
-            make.height.equalTo(self.button13.snp.width)
-        }
-
-        stack4.addSubview(button14)
-        button14.snp.makeConstraints { make in
-            make.height.equalTo(self.button14.snp.width)
-        }
-
-        stack4.addSubview(button15)
-        button15.snp.makeConstraints { make in
-            make.height.equalTo(self.button15.snp.width)
-        }
-
-        stack4.addSubview(button16)
-        button16.snp.makeConstraints { make in
-            make.height.equalTo(self.button16.snp.width)
-        }
-
-        stack5.addSubview(button17)
-        button17.snp.makeConstraints { make in
-            make.height.equalTo(self.button17.snp.width)
-        }
-
-        stack5.addSubview(button18)
-        button18.snp.makeConstraints { make in
-            make.height.equalTo(self.button18.snp.width)
-        }
-
-        stack5.addSubview(button19)
-        button19.snp.makeConstraints { make in
-            make.height.equalTo(self.button19.snp.width)
-        }
-
-        stack5.addSubview(button20)
-        button20.snp.makeConstraints { make in
-            make.height.equalTo(self.button20.snp.width)
-        }
+//        stack.addSubview(button)
+//        button.snp.makeConstraints { make in
+//            make.height.equalTo(buttons[buttons.count - 1][buttons.count - 1].snp.width)
+//        }
+//
+//        stack.addSubview(button2)
+//        button2.snp.makeConstraints { make in
+//            make.height.equalTo(buttons[buttons.count - 1][buttons.count - 1].snp.width)
+//            make.width.equalTo(buttons[buttons.count - 1][buttons.count - 1].snp.width)
+//        }
+//
+//        stack.addSubview(button3)
+//        button3.snp.makeConstraints { make in
+//            make.height.equalTo(buttons[buttons.count - 1][buttons.count - 1].snp.width)
+//            make.width.equalTo(buttons[buttons.count - 1][buttons.count - 1].snp.width)
+//        }
+        
+        
         
         self.view.addSubview(label)
         label.snp.makeConstraints { make in
@@ -282,11 +214,16 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
+    
 }
 
 extension ViewController: ButtonDelegate {
     func returnedValue(value: String) {
-        print(value)
+        if self.label.text! == "0" {
+            self.label.text! = String(value)
+        } else {
+            self.label.text! += String(value)
+        }
     }
 }
 
