@@ -50,10 +50,6 @@ class Button: UIButton {
         commonInit()
     }
     
-//    override func layoutSubviews() {
-//        self.layer.cornerRadius = self.frame.height / 2
-//    }
-    
     private func commonInit() {
         self.backgroundColor           = self.color
         self.titleLabel?.font          = .systemFont(ofSize: 35)

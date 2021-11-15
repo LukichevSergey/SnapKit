@@ -10,9 +10,9 @@ import SnapKit
 
 class ViewController: UIViewController {
     
-    var buttons: [[Button]] = [[], [], [], [], []]
+    private var buttons: [[Button]] = [[], [], [], [], []]
     
-    var stacks: [UIStackView] = []
+    private var stacks: [UIStackView] = []
 
     lazy var label: UILabel = {
         let label = UILabel()
@@ -21,6 +21,15 @@ class ViewController: UIViewController {
         label.textColor = .white
         label.font = .systemFont(ofSize: 65)
         return label
+    }()
+    
+    //Создание вертикального UIStackView
+    private lazy var mainStack: UIStackView = {
+        let stack          = UIStackView()
+        stack.distribution = .fillProportionally
+        stack.spacing      = 10
+        stack.axis         = .vertical
+        return stack
     }()
 
     override func viewDidLoad() {
@@ -32,11 +41,11 @@ class ViewController: UIViewController {
             if item.rawValue == "0" || item.rawValue == "," || item.rawValue == "=" {
                 let button = Button(title: item.rawValue, frame: .zero)
                 button.delegate = self
-                self.buttons[0].append(button)
+                self.buttons[4].append(button)
             } else if item.rawValue == "1" || item.rawValue == "2" || item.rawValue == "3" || item.rawValue == "+" {
                 let button = Button(title: item.rawValue, frame: .zero)
                 button.delegate = self
-                self.buttons[1].append(button)
+                self.buttons[3].append(button)
             } else if item.rawValue == "4" || item.rawValue == "5" || item.rawValue == "6" || item.rawValue == "-" {
                 let button = Button(title: item.rawValue, frame: .zero)
                 button.delegate = self
@@ -44,22 +53,15 @@ class ViewController: UIViewController {
             } else if item.rawValue == "7" || item.rawValue == "8" || item.rawValue == "9" || item.rawValue == "*" {
                 let button = Button(title: item.rawValue, frame: .zero)
                 button.delegate = self
-                self.buttons[3].append(button)
+                self.buttons[1].append(button)
             } else if item.rawValue == "AC" || item.rawValue == "+/-" || item.rawValue == "%" || item.rawValue == "/" {
                 let button = Button(title: item.rawValue, frame: .zero)
                 button.delegate = self
-                self.buttons[4].append(button)
+                self.buttons[0].append(button)
             }
         }
 
-        //Создание вертикального UIStackView
-        lazy var mainStack: UIStackView = {
-            let stack          = UIStackView()
-            stack.distribution = .fillProportionally
-            stack.spacing      = 10
-            stack.axis         = .vertical
-            return stack
-        }()
+
         
         
         // Перебор всех кнопок
@@ -80,12 +82,12 @@ class ViewController: UIViewController {
             //Добавление констрейнтов для кнопок
             for (i, button) in item.enumerated() {
                 stack.addArrangedSubview(button)
-                if index == 0 {
+                if index == buttons.count - 1 {
                     button.snp.makeConstraints { make in
-                        if i != 0 {
-                            make.width.equalTo(buttons[0][0].snp.width)
+                        if i != buttons.count - 1 {
+                            make.width.equalTo(buttons[buttons.count - 1][0].snp.width)
                         }
-                        make.height.equalTo(buttons[0][0].snp.width)
+                        make.height.equalTo(buttons[buttons.count - 1][0].snp.width)
                     }
                 } else {
                     button.snp.makeConstraints { make in
@@ -93,9 +95,6 @@ class ViewController: UIViewController {
                     }
                 }
             }
-        }
-        
-        for stack in stacks.reversed() {
             mainStack.addArrangedSubview(stack)
         }
         
@@ -117,6 +116,12 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        for buttonsBlock in buttons {
+            for button in buttonsBlock {
+                button.roundingButtons()
+            }
+        }
     }
     
 }
@@ -127,4 +132,3 @@ extension ViewController: ButtonDelegate {
         self.label.text = CalculatorProperties.shared.resultText
     }
 }
-

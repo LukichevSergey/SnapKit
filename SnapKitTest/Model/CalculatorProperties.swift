@@ -11,12 +11,12 @@ class CalculatorProperties {
     
     static let shared = CalculatorProperties()
     
-    var numberOne: Double = 0
-    var numberTwo: Double = 0
-    var sign: Sign        = .empty
-    var dotIsPlaced: Bool = false
-    var result            = Number.zero.rawValue
-    var resultOnDisplay   = ""
+    private var numberOne: Double = 0
+    private var numberTwo: Double = 0
+    private var sign: Sign        = .empty
+    private var dotIsPlaced: Bool = false
+    private var result            = Number.zero.rawValue
+    private var resultOnDisplay   = ""
     var resultText: String {
         return result.textFormatting
     }
