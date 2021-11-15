@@ -10,11 +10,11 @@ import SnapKit
 
 class ViewController: UIViewController {
     
-    private var buttons: [[Button]] = [[], [], [], [], []]
+    private var buttons: [[Button]] = [[], [], [], [], [], []]
     
     private var stacks: [UIStackView] = []
 
-    lazy var label: UILabel = {
+    private lazy var label: UILabel = {
         let label = UILabel()
         label.text = "0"
         label.textAlignment = .right
@@ -31,6 +31,14 @@ class ViewController: UIViewController {
         stack.axis         = .vertical
         return stack
     }()
+    
+    private lazy var bottomStack: UIStackView = {
+        let stack          = UIStackView()
+        stack.distribution = .fillEqually
+        stack.spacing      = 10
+        stack.axis         = .horizontal
+        return stack
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,10 +46,14 @@ class ViewController: UIViewController {
         
         //Создание кнопок
         Buttons.allCases.forEach { item in
-            if item.rawValue == "0" || item.rawValue == "," || item.rawValue == "=" {
+            if item.rawValue == "0" {
                 let button = Button(title: item.rawValue, frame: .zero)
                 button.delegate = self
                 self.buttons[4].append(button)
+            } else if item.rawValue == "," || item.rawValue == "=" {
+                let button = Button(title: item.rawValue, frame: .zero)
+                button.delegate = self
+                self.buttons[5].append(button)
             } else if item.rawValue == "1" || item.rawValue == "2" || item.rawValue == "3" || item.rawValue == "+" {
                 let button = Button(title: item.rawValue, frame: .zero)
                 button.delegate = self
@@ -61,9 +73,6 @@ class ViewController: UIViewController {
             }
         }
 
-
-        
-        
         // Перебор всех кнопок
         for (index, item) in buttons.enumerated() {
             
@@ -80,23 +89,22 @@ class ViewController: UIViewController {
             stacks.append(stack)
 
             //Добавление констрейнтов для кнопок
-            for (i, button) in item.enumerated() {
+            for button in item {
                 stack.addArrangedSubview(button)
-                if index == buttons.count - 1 {
-                    button.snp.makeConstraints { make in
-                        if i != buttons.count - 1 {
-                            make.width.equalTo(buttons[buttons.count - 1][0].snp.width)
-                        }
-                        make.height.equalTo(buttons[buttons.count - 1][0].snp.width)
-                    }
-                } else {
+
                     button.snp.makeConstraints { make in
                         make.height.equalTo(button.snp.width)
                     }
-                }
             }
-            mainStack.addArrangedSubview(stack)
+            
+            if index == 4 || index == 5 {
+                bottomStack.addArrangedSubview(stack)
+            } else {
+                mainStack.addArrangedSubview(stack)
+            }
         }
+        
+        mainStack.addArrangedSubview(bottomStack)
         
         self.view.addSubview(mainStack)
         mainStack.snp.makeConstraints { make in
@@ -123,7 +131,6 @@ class ViewController: UIViewController {
             }
         }
     }
-    
 }
 
 extension ViewController: ButtonDelegate {
