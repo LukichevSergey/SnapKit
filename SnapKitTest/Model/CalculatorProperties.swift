@@ -15,7 +15,7 @@ class CalculatorProperties {
     private var numberTwo: Double = 0
     private var sign: Sign        = .empty
     private var dotIsPlaced: Bool = false
-    private var result            = Number.zero.rawValue
+    private var result            = Buttons.zero.rawValue
     private var resultOnDisplay   = ""
     var resultText: String {
         return result.textFormatting
@@ -24,7 +24,7 @@ class CalculatorProperties {
     private init() {}
     
     private func pressToNumber(number: String) {
-        if self.result.count == 1 && self.result == Number.zero.rawValue {
+        if self.result.count == 1 && self.result == Buttons.zero.rawValue {
             self.result = number
         } else {
             self.result += number
@@ -66,7 +66,7 @@ class CalculatorProperties {
         self.numberOne        = firstNumber
         self.sign             = action
         self.dotIsPlaced      = false
-        self.result           = Number.zero.rawValue
+        self.result           = Buttons.zero.rawValue
         self.resultOnDisplay  = String(self.numberOne).textFormatting
     }
     
@@ -113,14 +113,14 @@ class CalculatorProperties {
             case .divide:
                 self.result = String(self.numberOne / self.numberTwo)
             default:
-                self.result = Number.zero.rawValue
+                self.result = Buttons.zero.rawValue
         }
     }
     
     private func clearProperties() {
         self.numberOne   = 0
         self.numberTwo   = 0
-        self.result      = Number.zero.rawValue
+        self.result      = Buttons.zero.rawValue
         self.sign        = .empty
         self.dotIsPlaced = false
     }
