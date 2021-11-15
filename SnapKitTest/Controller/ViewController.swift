@@ -91,16 +91,18 @@ class ViewController: UIViewController {
             //Добавление констрейнтов для кнопок
             for button in item {
                 stack.addArrangedSubview(button)
-
-                    button.snp.makeConstraints { make in
-                        make.height.equalTo(button.snp.width)
-                    }
+                button.snp.makeConstraints { make in
+                    make.height.equalTo(button.snp.width).priority(999)
+                }
             }
             
             if index == 4 || index == 5 {
                 bottomStack.addArrangedSubview(stack)
             } else {
                 mainStack.addArrangedSubview(stack)
+                stack.snp.makeConstraints { make in
+                    make.right.left.equalTo(mainStack)
+                }
             }
         }
         

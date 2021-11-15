@@ -133,7 +133,8 @@ class CalculatorProperties {
             || tag == Buttons.multiply.rawValue
             || tag == Buttons.divide.rawValue
             || tag == Buttons.changeSign.rawValue
-            || tag == Buttons.percent.rawValue {
+            || tag == Buttons.percent.rawValue
+            || tag == Buttons.comma.rawValue{
             pressToSign(tag: tag)
         } else {
             if result.count < 10 {
