@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		8753EE57273DED9F0042A415 /* ButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8753EE56273DED9F0042A415 /* ButtonDelegate.swift */; };
 		87655AF8273E595E00E23FCC /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87655AF7273E595E00E23FCC /* Buttons.swift */; };
+		87975CBC2742095900F67C51 /* CalculatorProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87975CBB2742095900F67C51 /* CalculatorProperties.swift */; };
+		87975CBE274209B300F67C51 /* Sign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87975CBD274209B300F67C51 /* Sign.swift */; };
+		87975CC027420A0B00F67C51 /* Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87975CBF27420A0B00F67C51 /* Number.swift */; };
+		87975CC327420A5400F67C51 /* String + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87975CC227420A5400F67C51 /* String + Extensions.swift */; };
+		87975CC527420A7A00F67C51 /* UIButton + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87975CC427420A7A00F67C51 /* UIButton + Extensions.swift */; };
 		87ABF640273C9E1600932C50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ABF63F273C9E1600932C50 /* AppDelegate.swift */; };
 		87ABF642273C9E1600932C50 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ABF641273C9E1600932C50 /* SceneDelegate.swift */; };
 		87ABF644273C9E1600932C50 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ABF643273C9E1600932C50 /* ViewController.swift */; };
@@ -21,6 +26,11 @@
 /* Begin PBXFileReference section */
 		8753EE56273DED9F0042A415 /* ButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonDelegate.swift; sourceTree = "<group>"; };
 		87655AF7273E595E00E23FCC /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
+		87975CBB2742095900F67C51 /* CalculatorProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorProperties.swift; sourceTree = "<group>"; };
+		87975CBD274209B300F67C51 /* Sign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sign.swift; sourceTree = "<group>"; };
+		87975CBF27420A0B00F67C51 /* Number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Number.swift; sourceTree = "<group>"; };
+		87975CC227420A5400F67C51 /* String + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extensions.swift"; sourceTree = "<group>"; };
+		87975CC427420A7A00F67C51 /* UIButton + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extensions.swift"; sourceTree = "<group>"; };
 		87ABF63C273C9E1600932C50 /* SnapKitTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapKitTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87ABF63F273C9E1600932C50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87ABF641273C9E1600932C50 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -46,9 +56,57 @@
 		87655AF6273E591D00E23FCC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				87ABF656273CDB9200932C50 /* Button.swift */,
 				87655AF7273E595E00E23FCC /* Buttons.swift */,
+				87975CBB2742095900F67C51 /* CalculatorProperties.swift */,
+				87975CBD274209B300F67C51 /* Sign.swift */,
+				87975CBF27420A0B00F67C51 /* Number.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		87975CC127420A3400F67C51 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				87975CC227420A5400F67C51 /* String + Extensions.swift */,
+				87975CC427420A7A00F67C51 /* UIButton + Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		87975CC627420AF100F67C51 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				87ABF641273C9E1600932C50 /* SceneDelegate.swift */,
+				87ABF63F273C9E1600932C50 /* AppDelegate.swift */,
+				8753EE56273DED9F0042A415 /* ButtonDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		87975CC727420B1500F67C51 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				87ABF643273C9E1600932C50 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		87975CC827420B4D00F67C51 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				87ABF64A273C9E1700932C50 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		87975CC927420B6300F67C51 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				87ABF64D273C9E1700932C50 /* Info.plist */,
+				87ABF648273C9E1700932C50 /* Assets.xcassets */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		87ABF633273C9E1600932C50 = {
@@ -71,14 +129,11 @@
 			isa = PBXGroup;
 			children = (
 				87655AF6273E591D00E23FCC /* Model */,
-				87ABF656273CDB9200932C50 /* Button.swift */,
-				8753EE56273DED9F0042A415 /* ButtonDelegate.swift */,
-				87ABF63F273C9E1600932C50 /* AppDelegate.swift */,
-				87ABF641273C9E1600932C50 /* SceneDelegate.swift */,
-				87ABF643273C9E1600932C50 /* ViewController.swift */,
-				87ABF648273C9E1700932C50 /* Assets.xcassets */,
-				87ABF64A273C9E1700932C50 /* LaunchScreen.storyboard */,
-				87ABF64D273C9E1700932C50 /* Info.plist */,
+				87975CC827420B4D00F67C51 /* View */,
+				87975CC727420B1500F67C51 /* Controller */,
+				87975CC127420A3400F67C51 /* Extensions */,
+				87975CC627420AF100F67C51 /* Delegates */,
+				87975CC927420B6300F67C51 /* Supporting Files */,
 			);
 			path = SnapKitTest;
 			sourceTree = "<group>";
@@ -159,12 +214,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87975CC527420A7A00F67C51 /* UIButton + Extensions.swift in Sources */,
 				87ABF644273C9E1600932C50 /* ViewController.swift in Sources */,
 				87ABF640273C9E1600932C50 /* AppDelegate.swift in Sources */,
+				87975CC027420A0B00F67C51 /* Number.swift in Sources */,
 				87ABF642273C9E1600932C50 /* SceneDelegate.swift in Sources */,
+				87975CC327420A5400F67C51 /* String + Extensions.swift in Sources */,
 				87655AF8273E595E00E23FCC /* Buttons.swift in Sources */,
 				87ABF657273CDB9200932C50 /* Button.swift in Sources */,
 				8753EE57273DED9F0042A415 /* ButtonDelegate.swift in Sources */,
+				87975CBE274209B300F67C51 /* Sign.swift in Sources */,
+				87975CBC2742095900F67C51 /* CalculatorProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,7 +367,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PV83Q4CKGN;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SnapKitTest/Info.plist;
+				INFOPLIST_FILE = "SnapKitTest/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -334,7 +394,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PV83Q4CKGN;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SnapKitTest/Info.plist;
+				INFOPLIST_FILE = "SnapKitTest/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
