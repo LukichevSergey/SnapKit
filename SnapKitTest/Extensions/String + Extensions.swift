@@ -7,9 +7,18 @@
 
 import Foundation
 
+private let formatter = NumberFormatter()
+
 extension String {
     var textFormatting: String {
-        return self.removeLastZero.replacingADotWithAComma
+        formatter.groupingSize = 3
+        formatter.groupingSeparator = " "
+        formatter.usesGroupingSeparator = true
+        if let number = Int(self.removeLastZero.replacingADotWithAComma) {
+            let numberToFormat = NSNumber(value:number)
+            return formatter.string(from: numberToFormat)!.removeLastZero.replacingADotWithAComma
+        }
+        return ""
     }
     
     private var removeLastZero: String {

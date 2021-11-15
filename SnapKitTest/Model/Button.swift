@@ -56,11 +56,15 @@ class Button: UIButton {
         self.titleLabel?.textAlignment = self.textAlignment!
         self.setTitle(self.title, for: .normal)
         self.setTitleColor(.white, for: .normal)
+
         self.addTarget(self, action: #selector(pressToButton), for: .touchUpInside)
     }
 
     @objc func pressToButton() {
         delegate?.returnedValue(value: self.title!)
+        
     }
+    
+    
     
 }
