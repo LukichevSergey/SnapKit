@@ -24,14 +24,6 @@ class Button: UIButton {
             return .darkGray
         }
     }
-    var textAlignment: UIButton.Configuration.TitleAlignment {
-        if title == "0" {
-//            self.contentEdgeInsets = UIEdgeInsets(top: 0, left: 32, bottom: 0, right: 0)
-            return .leading
-        } else {
-            return .center
-        }
-    }
     
     weak var delegate: ButtonDelegate?
     
@@ -77,9 +69,8 @@ class Button: UIButton {
         configuration.baseBackgroundColor   = self.color
         configuration.title                 = self.title
         configuration.attributedTitle?.font = .systemFont(ofSize: 35)
-        configuration.titleAlignment        = .automatic
         if self.title == "0" {
-            configuration.contentInsets     = .init(top: 0, leading: 0, bottom: 0, trailing: 80)
+            configuration.contentInsets     = .init(top: 0, leading: 0, bottom: 0, trailing: 90)
         }
         self.configuration                  = configuration
         self.addTarget(self, action: #selector(pressToButton), for: .touchUpInside)
