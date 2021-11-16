@@ -11,14 +11,7 @@ private let formatter = NumberFormatter()
 
 extension String {
     var textFormatting: String {
-        formatter.groupingSize = 3
-        formatter.groupingSeparator = " "
-        formatter.usesGroupingSeparator = true
-        if let number = Int(self.removeLastZero.replacingADotWithAComma) {
-            let numberToFormat = NSNumber(value:number)
-            return formatter.string(from: numberToFormat)!.removeLastZero.replacingADotWithAComma
-        }
-        return ""
+        return self.removeLastZero.replacingADotWithAComma
     }
     
     private var removeLastZero: String {

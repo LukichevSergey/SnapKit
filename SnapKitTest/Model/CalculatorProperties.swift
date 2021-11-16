@@ -18,7 +18,9 @@ class CalculatorProperties {
     private var result            = Buttons.zero.rawValue
     private var resultOnDisplay   = ""
     var resultText: String {
-        return result.textFormatting
+        get {
+            return result.textFormatting
+        }
     }
     
     private init() {}
@@ -90,7 +92,7 @@ class CalculatorProperties {
         if self.numberOne == 0 {
             self.result = String(Double(self.result)! / 100)
         } else {
-            self.numberTwo = self.numberOne * Double(self.result)! / 100
+            self.result = String(self.numberOne * Double(self.result)! / 100)
         }
     }
     

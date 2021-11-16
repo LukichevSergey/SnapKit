@@ -15,11 +15,13 @@ class ViewController: UIViewController {
     private var stacks: [UIStackView] = []
 
     private lazy var label: UILabel = {
-        let label = UILabel()
-        label.text = "0"
-        label.textAlignment = .right
-        label.textColor = .white
-        label.font = .systemFont(ofSize: 65)
+        let label                       = UILabel()
+        label.text                      = "0"
+        label.textAlignment             = .right
+        label.textColor                 = .white
+        label.minimumScaleFactor        = 0.5
+        label.adjustsFontSizeToFitWidth = true
+        label.font                      = .systemFont(ofSize: 65)
         return label
     }()
     

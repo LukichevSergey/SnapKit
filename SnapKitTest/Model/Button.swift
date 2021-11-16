@@ -39,6 +39,27 @@ class Button: UIButton {
         commonInit()
     }
     
+    override var isHighlighted: Bool {
+        get {
+            return super.isHighlighted
+        }
+        set {
+            if newValue {
+                if self.color == .orange {
+                    backgroundColor = .systemYellow
+                } else if self.color == .darkGray {
+                    backgroundColor = .gray
+                } else {
+                    backgroundColor = .systemGray4
+                }
+            }
+            else {
+                backgroundColor = self.color
+            }
+            super.isHighlighted = newValue
+        }
+    }
+    
     init(title: String, frame: CGRect) {
         self.title = title
         super.init(frame: frame)
@@ -56,7 +77,6 @@ class Button: UIButton {
         self.titleLabel?.textAlignment = self.textAlignment!
         self.setTitle(self.title, for: .normal)
         self.setTitleColor(.white, for: .normal)
-
         self.addTarget(self, action: #selector(pressToButton), for: .touchUpInside)
     }
 
@@ -64,7 +84,4 @@ class Button: UIButton {
         delegate?.returnedValue(value: self.title!)
         
     }
-    
-    
-    
 }
