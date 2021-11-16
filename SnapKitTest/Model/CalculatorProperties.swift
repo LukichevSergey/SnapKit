@@ -113,7 +113,11 @@ class CalculatorProperties {
             case .multiply:
                 self.result = String(self.numberOne * self.numberTwo)
             case .divide:
-                self.result = String(self.numberOne / self.numberTwo)
+                if self.numberTwo == 0 {
+                    self.result = "Ошибка"
+                } else {
+                    self.result = String(self.numberOne / self.numberTwo)
+                }
             default:
                 self.result = Buttons.zero.rawValue
         }
