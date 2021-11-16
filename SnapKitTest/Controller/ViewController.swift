@@ -25,22 +25,8 @@ class ViewController: UIViewController {
         return label
     }()
     
-    //Создание вертикального UIStackView
-    private lazy var mainStack: UIStackView = {
-        let stack          = UIStackView()
-        stack.distribution = .fillProportionally
-        stack.spacing      = 10
-        stack.axis         = .vertical
-        return stack
-    }()
-    
-    private lazy var bottomStack: UIStackView = {
-        let stack          = UIStackView()
-        stack.distribution = .fillEqually
-        stack.spacing      = 10
-        stack.axis         = .horizontal
-        return stack
-    }()
+    private lazy var mainStack:   UIStackView = self.createStackView(axis: .vertical,   distribution: .fillProportionally)
+    private lazy var bottomStack: UIStackView = self.createStackView(axis: .horizontal, distribution: .fillEqually)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,13 +65,7 @@ class ViewController: UIViewController {
         for (index, item) in buttons.enumerated() {
             
             //Создание горизонтального UIStackView
-            lazy var stack: UIStackView = {
-                let stack          = UIStackView()
-                stack.distribution = .fillProportionally
-                stack.spacing      = 10
-                stack.axis         = .horizontal
-                return stack
-            }()
+            lazy var stack: UIStackView = self.createStackView(axis: .horizontal, distribution: .fillProportionally)
             
             //Добавление UIStackView в массив
             stacks.append(stack)
@@ -100,6 +80,7 @@ class ViewController: UIViewController {
             
             if index == 4 || index == 5 {
                 bottomStack.addArrangedSubview(stack)
+                stack.distribution = .fillEqually
             } else {
                 mainStack.addArrangedSubview(stack)
                 stack.snp.makeConstraints { make in
@@ -134,6 +115,14 @@ class ViewController: UIViewController {
                 button.roundingButtons()
             }
         }
+    }
+    
+    private func createStackView(axis: NSLayoutConstraint.Axis, distribution: UIStackView.Distribution) -> UIStackView {
+        let stack          = UIStackView()
+        stack.distribution = distribution
+        stack.spacing      = 10
+        stack.axis         = axis
+        return stack
     }
 }
 

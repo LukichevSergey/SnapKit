@@ -24,10 +24,10 @@ class Button: UIButton {
             return .darkGray
         }
     }
-    var textAlignment: ContentHorizontalAlignment? {
+    var textAlignment: UIButton.Configuration.TitleAlignment {
         if title == "0" {
-            self.contentEdgeInsets = UIEdgeInsets(top: 0, left: 32, bottom: 0, right: 0)
-            return .left
+//            self.contentEdgeInsets = UIEdgeInsets(top: 0, left: 32, bottom: 0, right: 0)
+            return .leading
         } else {
             return .center
         }
@@ -73,11 +73,15 @@ class Button: UIButton {
     }
     
     private func commonInit() {
-        self.backgroundColor            = self.color
-        self.titleLabel?.font           = .systemFont(ofSize: 35)
-        self.contentHorizontalAlignment = self.textAlignment!
-        self.setTitle(self.title, for: .normal)
-        self.setTitleColor(.white, for: .normal)
+        var configuration = UIButton.Configuration.filled()
+        configuration.baseBackgroundColor   = self.color
+        configuration.title                 = self.title
+        configuration.attributedTitle?.font = .systemFont(ofSize: 35)
+        configuration.titleAlignment        = .automatic
+        if self.title == "0" {
+            configuration.contentInsets     = .init(top: 0, leading: 0, bottom: 0, trailing: 80)
+        }
+        self.configuration                  = configuration
         self.addTarget(self, action: #selector(pressToButton), for: .touchUpInside)
     }
 
