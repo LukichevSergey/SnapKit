@@ -24,8 +24,9 @@ class Button: UIButton {
             return .darkGray
         }
     }
-    var textAlignment: NSTextAlignment? {
+    var textAlignment: ContentHorizontalAlignment? {
         if title == "0" {
+            self.contentEdgeInsets = UIEdgeInsets(top: 0, left: 32, bottom: 0, right: 0)
             return .left
         } else {
             return .center
@@ -72,9 +73,9 @@ class Button: UIButton {
     }
     
     private func commonInit() {
-        self.backgroundColor           = self.color
-        self.titleLabel?.font          = .systemFont(ofSize: 35)
-        self.titleLabel?.textAlignment = self.textAlignment!
+        self.backgroundColor            = self.color
+        self.titleLabel?.font           = .systemFont(ofSize: 35)
+        self.contentHorizontalAlignment = self.textAlignment!
         self.setTitle(self.title, for: .normal)
         self.setTitleColor(.white, for: .normal)
         self.addTarget(self, action: #selector(pressToButton), for: .touchUpInside)
